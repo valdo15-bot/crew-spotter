@@ -23,7 +23,7 @@ Splash 01 → Splash 02 → Onboarding 1 → Onboarding 2 → Onboarding 3 → O
 
 ### Registro
 ```
-Register (email + tel.) → [Modal Facebook | Modal Google] → Home
+Register (email + tel.) → [Modal Google | Modal Apple] → Home
 ```
 
 ### Login

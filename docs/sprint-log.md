@@ -37,3 +37,8 @@
 ## Sprint 1 — (próximo)
 
 _Por definir_
+
+### Cambios de diseño
+- ✅ Facebook Sign In → eliminado
+- ✅ Login social: solo Google + Apple Sign In
+- Motivo: Apple Sign In es obligatorio en iOS cuando se ofrecen opciones de login social. Más limpio y confiable que Facebook.

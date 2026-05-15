@@ -196,7 +196,7 @@ Sistema basado en múltiplos de **4px**.
 | Realidad Aumentada | ViroReact / React Native AR |
 | Backend | Node.js + Express |
 | Base de datos | Firebase Firestore (tiempo real) |
-| Autenticación | Firebase Auth (email, Google, Apple) |
+| Autenticación | Firebase Auth (email, Google, Apple Sign In) |
 | Push notifications | Expo Notifications |
 | Estado global | Zustand |
 
