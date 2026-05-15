@@ -9,7 +9,6 @@ import {
   ViewToken,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -21,41 +20,67 @@ import { RootStackParamList } from '../../navigation/RootNavigator';
 import { colors } from '../../utils/designTokens';
 
 const { width } = Dimensions.get('window');
-const ILLUSTRATION_SIZE = Math.min(width * 0.68, 260);
+const ILLUS_SIZE = Math.min(width * 0.82, 310);
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Onboarding'>;
+
+interface SubtitlePart {
+  text: string;
+  bold: boolean;
+}
 
 interface Slide {
   id: string;
   Illustration: React.FC<{ width: number; height: number }>;
   title: string;
-  subtitle: string;
+  subtitleParts: SubtitlePart[];
+  cta: string;
 }
 
 const SLIDES: Slide[] = [
   {
     id: '1',
     Illustration: Onboarding01,
-    title: 'Welcome to\nCrew Spotter',
-    subtitle: 'Find your friends anywhere — at festivals, concerts, or any crowded event.',
+    title: 'Welcome\nto Crew Spotter!',
+    subtitleParts: [
+      { text: 'The best way to ', bold: false },
+      { text: 'find your friends in crowded crowds without complications', bold: true },
+      { text: ". Let's get started!", bold: false },
+    ],
+    cta: 'Next',
   },
   {
     id: '2',
     Illustration: Onboarding02,
-    title: 'Find quickly',
-    subtitle: 'Locate your crew in real-time, even in the most crowded places.',
+    title: 'Find Your Friends\nQuickly',
+    subtitleParts: [
+      { text: 'Use our app to ', bold: false },
+      { text: 'locate your friends in real time with active geolocation', bold: true },
+      { text: ', no matter how crowded the place is!', bold: false },
+    ],
+    cta: 'Next',
   },
   {
     id: '3',
     Illustration: Onboarding03,
-    title: 'Friends radar',
-    subtitle: 'See exactly where your friends are with our live map and AR compass.',
+    title: 'Friends Radar',
+    subtitleParts: [
+      { text: 'The radar allows you to ', bold: false },
+      { text: 'visualize the exact location of your friends', bold: true },
+      { text: '. Look around and find the right direction!', bold: false },
+    ],
+    cta: 'Next',
   },
   {
     id: '4',
     Illustration: Onboarding04,
-    title: 'Create a group',
-    subtitle: "Start tracking together. Create a group and never lose your crew again.",
+    title: 'Create a Group',
+    subtitleParts: [
+      { text: 'Make searching even easier! ', bold: false },
+      { text: 'Create a group to share locations together', bold: true },
+      { text: ". Press 'Create Group' to get started.", bold: false },
+    ],
+    cta: 'Create Group',
   },
 ];
 
@@ -66,38 +91,29 @@ export default function OnboardingScreen() {
 
   const onViewableItemsChanged = useRef(
     ({ viewableItems }: { viewableItems: ViewToken[] }) => {
-      if (viewableItems.length > 0) {
-        setActiveIndex(viewableItems[0].index ?? 0);
-      }
+      if (viewableItems.length > 0) setActiveIndex(viewableItems[0].index ?? 0);
     },
   ).current;
 
   const viewabilityConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
 
-  const handleNext = () => {
+  const goToRegister = () => navigation.navigate('Register');
+
+  const handleCta = () => {
     if (activeIndex < SLIDES.length - 1) {
       flatListRef.current?.scrollToIndex({ index: activeIndex + 1, animated: true });
     } else {
-      navigation.navigate('Register');
+      goToRegister();
     }
   };
 
-  const isLastSlide = activeIndex === SLIDES.length - 1;
+  const isLast = activeIndex === SLIDES.length - 1;
 
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.safeArea} edges={['top', 'bottom']}>
 
-        {/* Skip */}
-        <View style={styles.topBar}>
-          {!isLastSlide && (
-            <TouchableOpacity onPress={() => navigation.navigate('Register')} hitSlop={8}>
-              <Text style={styles.skipText}>Skip</Text>
-            </TouchableOpacity>
-          )}
-        </View>
-
-        {/* Slides */}
+        {/* Slides: título + ilustración + subtítulo */}
         <FlatList
           ref={flatListRef}
           data={SLIDES}
@@ -111,37 +127,35 @@ export default function OnboardingScreen() {
           style={styles.flatList}
           renderItem={({ item }) => (
             <View style={styles.slide}>
+              <Text style={styles.title}>{item.title}</Text>
               <View style={styles.illustrationArea}>
-                <item.Illustration width={ILLUSTRATION_SIZE} height={ILLUSTRATION_SIZE} />
+                <item.Illustration width={ILLUS_SIZE} height={ILLUS_SIZE} />
               </View>
-              <View style={styles.textArea}>
-                <Text style={styles.title}>{item.title}</Text>
-                <Text style={styles.subtitle}>{item.subtitle}</Text>
-              </View>
+              <Text style={styles.subtitle}>
+                {item.subtitleParts.map((part, i) => (
+                  <Text key={i} style={part.bold ? styles.subtitleBold : styles.subtitleRegular}>
+                    {part.text}
+                  </Text>
+                ))}
+              </Text>
             </View>
           )}
         />
 
-        {/* Dots */}
-        <View style={styles.dotsRow}>
-          {SLIDES.map((_, i) => (
-            <View key={i} style={[styles.dot, i === activeIndex && styles.dotActive]} />
-          ))}
-        </View>
+        {/* Fijo: dots + botón CTA + skip */}
+        <View style={styles.bottom}>
+          <View style={styles.dotsRow}>
+            {SLIDES.map((_, i) => (
+              <View key={i} style={[styles.dot, i === activeIndex && styles.dotActive]} />
+            ))}
+          </View>
 
-        {/* CTA */}
-        <View style={styles.ctaArea}>
-          <TouchableOpacity onPress={handleNext} activeOpacity={0.85}>
-            <LinearGradient
-              colors={[colors.accentDark, colors.accentLight]}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={styles.ctaButton}
-            >
-              <Text style={styles.ctaText}>
-                {isLastSlide ? "LET'S GO" : 'NEXT'}
-              </Text>
-            </LinearGradient>
+          <TouchableOpacity style={styles.ctaButton} onPress={handleCta} activeOpacity={0.85}>
+            <Text style={styles.ctaText}>{SLIDES[activeIndex].cta}</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.skipBtn} onPress={goToRegister} hitSlop={12}>
+            <Text style={styles.skipText}>{isLast ? '✕   Close' : 'Skip   ›'}</Text>
           </TouchableOpacity>
         </View>
 
@@ -158,78 +172,84 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
   },
-  topBar: {
-    height: 44,
-    alignItems: 'flex-end',
-    justifyContent: 'center',
-    paddingHorizontal: 28,
-  },
-  skipText: {
-    fontFamily: 'Roboto_500Medium',
-    fontSize: 14,
-    color: colors.gray500,
-  },
   flatList: {
     flex: 1,
   },
   slide: {
     width,
     flex: 1,
-    paddingHorizontal: 32,
+    paddingHorizontal: 24,
+    paddingTop: 28,
+  },
+  title: {
+    fontFamily: 'Poppins_700Bold',
+    fontSize: 26,
+    color: colors.accent,
+    textAlign: 'center',
+    lineHeight: 34,
+    marginBottom: 16,
   },
   illustrationArea: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textArea: {
-    paddingBottom: 8,
-  },
-  title: {
-    fontFamily: 'Poppins_700Bold',
-    fontSize: 28,
-    color: colors.white,
-    lineHeight: 36,
-    marginBottom: 12,
-  },
   subtitle: {
     fontFamily: 'Roboto_400Regular',
-    fontSize: 15,
-    color: colors.gray500,
-    lineHeight: 24,
+    fontSize: 14,
+    color: colors.white,
+    textAlign: 'center',
+    lineHeight: 22,
+    paddingBottom: 8,
+  },
+  subtitleRegular: {
+    fontFamily: 'Roboto_400Regular',
+    fontWeight: '400',
+  },
+  subtitleBold: {
+    fontFamily: 'Roboto_700Bold',
+    fontWeight: '700',
+  },
+  bottom: {
+    paddingHorizontal: 24,
+    paddingBottom: 8,
   },
   dotsRow: {
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 32,
-    paddingTop: 24,
-    paddingBottom: 20,
     gap: 6,
+    marginBottom: 20,
   },
   dot: {
     width: 8,
     height: 8,
     borderRadius: 4,
-    backgroundColor: colors.gray100,
+    backgroundColor: colors.bgTertiary,
   },
   dotActive: {
-    width: 24,
     backgroundColor: colors.accent,
-  },
-  ctaArea: {
-    paddingHorizontal: 24,
-    paddingBottom: 12,
   },
   ctaButton: {
     height: 52,
+    backgroundColor: colors.accent,
     borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: 16,
   },
   ctaText: {
     fontFamily: 'Poppins_700Bold',
-    fontSize: 13,
+    fontSize: 15,
     color: colors.white,
-    letterSpacing: 1.2,
+  },
+  skipBtn: {
+    alignItems: 'center',
+    paddingVertical: 8,
+  },
+  skipText: {
+    fontFamily: 'Roboto_500Medium',
+    fontSize: 13,
+    color: colors.accent,
   },
 });

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import * as SplashScreen from 'expo-splash-screen';
 import { useFonts, Poppins_700Bold, Poppins_600SemiBold } from '@expo-google-fonts/poppins';
-import { Roboto_400Regular, Roboto_500Medium } from '@expo-google-fonts/roboto';
+import { Roboto_400Regular, Roboto_500Medium, Roboto_700Bold } from '@expo-google-fonts/roboto';
 import { StatusBar } from 'expo-status-bar';
 import RootNavigator from './src/navigation/RootNavigator';
 
@@ -15,6 +15,7 @@ export default function App() {
     Poppins_600SemiBold,
     Roboto_400Regular,
     Roboto_500Medium,
+    Roboto_700Bold,
   });
 
   const onLayoutRootView = useCallback(async () => {
