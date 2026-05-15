@@ -24,6 +24,7 @@ const ILLUS_SIZE = Math.min(width * 0.82, 310);
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList, 'Onboarding'>;
 
+
 interface SubtitlePart {
   text: string;
   bold: boolean;
@@ -97,7 +98,7 @@ export default function OnboardingScreen() {
 
   const viewabilityConfig = useRef({ viewAreaCoveragePercentThreshold: 50 }).current;
 
-  const goToRegister = () => navigation.navigate('Register');
+  const goToRegister = () => navigation.navigate('Auth');
 
   const handleCta = () => {
     if (activeIndex < SLIDES.length - 1) {
