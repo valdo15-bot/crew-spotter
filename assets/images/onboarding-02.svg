@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#DA4531"/>
+      <stop offset="100%" stop-color="#FEB15F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FEB15F" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#DA4531" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Radar rings -->
+  <circle cx="140" cy="140" r="118" stroke="#3A3F52" stroke-width="1" opacity="0.3"/>
+  <circle cx="140" cy="140" r="90" stroke="#E8773A" stroke-width="1" opacity="0.18"/>
+  <circle cx="140" cy="140" r="62" stroke="#E8773A" stroke-width="1.5" opacity="0.3"/>
+  <circle cx="140" cy="140" r="36" stroke="#E8773A" stroke-width="2" opacity="0.5"/>
+
+  <!-- Center glow -->
+  <circle cx="140" cy="140" r="52" fill="url(#glow)"/>
+
+  <!-- Location pin -->
+  <path d="M140 98 C128 98 118 108 118 120 C118 136 140 158 140 158 C140 158 162 136 162 120 C162 108 152 98 140 98Z" fill="url(#g1)"/>
+  <circle cx="140" cy="120" r="9" fill="#1C2130"/>
+
+  <!-- Speed lines left -->
+  <line x1="22" y1="124" x2="62" y2="124" stroke="#E8773A" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+  <line x1="12" y1="140" x2="58" y2="140" stroke="#E8773A" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+  <line x1="22" y1="156" x2="62" y2="156" stroke="#E8773A" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+  <line x1="38" y1="108" x2="66" y2="108" stroke="#E8773A" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+  <line x1="38" y1="172" x2="66" y2="172" stroke="#E8773A" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Speed lines right -->
+  <line x1="218" y1="124" x2="258" y2="124" stroke="#E8773A" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+  <line x1="222" y1="140" x2="268" y2="140" stroke="#E8773A" stroke-width="2.5" stroke-linecap="round" opacity="0.85"/>
+  <line x1="218" y1="156" x2="258" y2="156" stroke="#E8773A" stroke-width="2" stroke-linecap="round" opacity="0.65"/>
+  <line x1="214" y1="108" x2="242" y2="108" stroke="#E8773A" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+  <line x1="214" y1="172" x2="242" y2="172" stroke="#E8773A" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+</svg>

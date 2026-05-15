@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#DA4531"/>
+      <stop offset="100%" stop-color="#FEB15F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Radar rings -->
+  <circle cx="140" cy="140" r="118" stroke="#3A3F52" stroke-width="1" opacity="0.3"/>
+  <circle cx="140" cy="140" r="88" stroke="#3A3F52" stroke-width="1" opacity="0.35"/>
+  <circle cx="140" cy="140" r="58" stroke="#3A3F52" stroke-width="1" opacity="0.4"/>
+  <circle cx="140" cy="140" r="28" stroke="#E8773A" stroke-width="1.5" opacity="0.55"/>
+
+  <!-- Crosshair -->
+  <line x1="22" y1="140" x2="258" y2="140" stroke="#3A3F52" stroke-width="0.8" opacity="0.4"/>
+  <line x1="140" y1="22" x2="140" y2="258" stroke="#3A3F52" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- Radar sweep -->
+  <path d="M140 140 L140 52 A88 88 0 0 1 216 96 Z" fill="#E8773A" opacity="0.07"/>
+  <line x1="140" y1="140" x2="216" y2="96" stroke="#E8773A" stroke-width="1.5" opacity="0.4"/>
+
+  <!-- Center dot (you) -->
+  <circle cx="140" cy="140" r="10" fill="url(#g1)"/>
+  <circle cx="140" cy="140" r="5" fill="#1C2130"/>
+
+  <!-- Friend 1 — top-right (close, online) -->
+  <circle cx="186" cy="80" r="16" fill="#2A2E3A" stroke="#E8773A" stroke-width="2"/>
+  <circle cx="186" cy="76" r="6" fill="#9AA0B2"/>
+  <path d="M178 87 Q178 83 186 83 Q194 83 194 87Z" fill="#9AA0B2"/>
+  <circle cx="197" cy="69" r="5" fill="#34C759" stroke="#1C2130" stroke-width="1.5"/>
+
+  <!-- Friend 2 — left (mid distance) -->
+  <circle cx="68" cy="132" r="14" fill="#2A2E3A" stroke="#4A5066" stroke-width="1.5"/>
+  <circle cx="68" cy="129" r="5" fill="#7A8096"/>
+  <path d="M61 138 Q61 134 68 134 Q75 134 75 138Z" fill="#7A8096"/>
+
+  <!-- Friend 3 — bottom-right (far) -->
+  <circle cx="200" cy="200" r="14" fill="#2A2E3A" stroke="#4A5066" stroke-width="1.5"/>
+  <circle cx="200" cy="197" r="5" fill="#7A8096"/>
+  <path d="M193 207 Q193 203 200 203 Q207 203 207 207Z" fill="#7A8096"/>
+
+  <!-- Distance badge friend 1 -->
+  <rect x="170" y="44" width="36" height="16" rx="5" fill="rgba(0,0,0,0.55)"/>
+  <rect x="174" y="49" width="10" height="2" rx="1" fill="#E8773A" opacity="0.9"/>
+  <rect x="186" y="49" width="14" height="2" rx="1" fill="#9AA0B2" opacity="0.6"/>
+  <rect x="174" y="53" width="8" height="2" rx="1" fill="#9AA0B2" opacity="0.4"/>
+
+  <!-- Distance badge friend 2 -->
+  <rect x="24" y="138" width="36" height="16" rx="5" fill="rgba(0,0,0,0.55)"/>
+  <rect x="28" y="143" width="12" height="2" rx="1" fill="#9AA0B2" opacity="0.6"/>
+  <rect x="28" y="147" width="8" height="2" rx="1" fill="#9AA0B2" opacity="0.4"/>
+
+  <!-- Distance badge friend 3 -->
+  <rect x="184" y="218" width="36" height="16" rx="5" fill="rgba(0,0,0,0.55)"/>
+  <rect x="188" y="223" width="14" height="2" rx="1" fill="#9AA0B2" opacity="0.5"/>
+  <rect x="188" y="227" width="10" height="2" rx="1" fill="#9AA0B2" opacity="0.35"/>
+</svg>

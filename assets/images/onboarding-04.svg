@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 280" fill="none">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#DA4531"/>
+      <stop offset="100%" stop-color="#FEB15F"/>
+    </linearGradient>
+    <linearGradient id="g2" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#DA4531" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FEB15F" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background ring -->
+  <circle cx="140" cy="140" r="118" stroke="#3A3F52" stroke-width="1" opacity="0.3"/>
+
+  <!-- Connection lines (dashed) -->
+  <line x1="140" y1="104" x2="86" y2="182" stroke="#E8773A" stroke-width="2" stroke-dasharray="5 4" opacity="0.45"/>
+  <line x1="140" y1="104" x2="194" y2="182" stroke="#E8773A" stroke-width="2" stroke-dasharray="5 4" opacity="0.45"/>
+  <line x1="86" y1="182" x2="194" y2="182" stroke="#E8773A" stroke-width="2" stroke-dasharray="5 4" opacity="0.45"/>
+
+  <!-- Node glow — person 1 (top, main) -->
+  <circle cx="140" cy="100" r="32" fill="url(#g2)"/>
+
+  <!-- Person 1 — top center (gradient, main) -->
+  <circle cx="140" cy="100" r="26" fill="url(#g1)"/>
+  <circle cx="140" cy="94" r="9" fill="#1C2130"/>
+  <path d="M124 114 Q124 107 140 107 Q156 107 156 114Z" fill="#1C2130"/>
+
+  <!-- Person 2 — bottom left -->
+  <circle cx="86" cy="182" r="22" fill="#2A2E3A" stroke="#E8773A" stroke-width="2"/>
+  <circle cx="86" cy="177" r="8" fill="#9AA0B2"/>
+  <path d="M73 193 Q73 187 86 187 Q99 187 99 193Z" fill="#9AA0B2"/>
+
+  <!-- Person 3 — bottom right -->
+  <circle cx="194" cy="182" r="22" fill="#2A2E3A" stroke="#E8773A" stroke-width="2"/>
+  <circle cx="194" cy="177" r="8" fill="#9AA0B2"/>
+  <path d="M181 193 Q181 187 194 187 Q207 187 207 193Z" fill="#9AA0B2"/>
+
+  <!-- Add / invite button (bottom center) -->
+  <circle cx="140" cy="218" r="18" fill="url(#g1)"/>
+  <line x1="140" y1="209" x2="140" y2="227" stroke="#1C2130" stroke-width="3" stroke-linecap="round"/>
+  <line x1="131" y1="218" x2="149" y2="218" stroke="#1C2130" stroke-width="3" stroke-linecap="round"/>
+</svg>
