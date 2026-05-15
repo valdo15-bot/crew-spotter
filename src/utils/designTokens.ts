@@ -39,7 +39,10 @@ export const colors = {
 };
 
 export const typography = {
-  fontFamily: 'Poppins',
+  fontFamily: {
+    heading: 'Poppins',
+    body: 'Roboto',
+  },
   sizes: { xs: 10, sm: 11, md: 12, base: 13, lg: 14, xl: 21, xxl: 24 },
   weights: { regular: '400', medium: '500', semibold: '600', bold: '700' },
 };
@@ -99,4 +102,12 @@ export const components = {
     states: { pending: '#5A5F6E', active: '#E8773A', completed: '#34C759' },
     line:   { height: 2, pending: '#5A5F6E', completed: '#E8773A' },
   },
+};
+
+// ─── Regla tipográfica ───────────────────────────────────
+// Poppins  → títulos (h1, h2, h3), CTAs, labels de botones
+// Roboto   → párrafos, textos secundarios, metadata, placeholders
+export const fontRules = {
+  poppins: ['titles', 'cta', 'button labels', 'tab labels', 'screen headings'],
+  roboto:  ['body text', 'paragraphs', 'descriptions', 'placeholders', 'metadata', 'captions', 'form labels'],
 };
